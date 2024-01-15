@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/haibin0628/galaxylib"
-	"gorm.io/driver/postgres"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -36,7 +36,7 @@ func NewDbFactory(conn string) *DbFactory {
 func (d *DbFactory) Db() *gorm.DB {
 	var err error
 	if d.db == nil {
-		d.db, err = gorm.Open(postgres.Open(d.conn), &gorm.Config{})
+		d.db, err = gorm.Open(mysql.Open(d.conn), &gorm.Config{})
 	}
 	if err != nil {
 		fmt.Println(err)
